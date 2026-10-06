@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Task 29 - Product Basket Analysis</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: #f5f7fb;
+}
+
+h1 {
+    color: #17365d;
+}
+
+.card {
+    display: inline-block;
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    min-width: 180px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #17365d;
+    color: white;
+}
+
+.note {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>VEDA TECHNOLOGY</h1>
+<h2>Task 29 - Product Basket Analysis</h2>
+
+<div class="card">
+<b>Total Transactions</b>
+<h2>1,000</h2>
+</div>
+
+<div class="card">
+<b>Unique Products</b>
+<h2>20</h2>
+</div>
+
+<div class="card">
+<b>Product Pairs</b>
+<h2>190</h2>
+</div>
+
+<div class="note">
+<h3>Objective</h3>
+<p>
+Identify products that are frequently purchased together and
+generate association-style product recommendations.
+</p>
+
+<h3>Method</h3>
+<p>
+Each Order ID is treated as one transaction. Products inside
+the same transaction are combined into product pairs.
+Self-pairs are excluded.
+</p>
+
+<h3>Top Product Pairs</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Product Pair</th>
+      <th>Pair Count</th>
+      <th>Support %</th>
+      <th>Lift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bread + Butter</td>
+      <td>234</td>
+      <td>23.4</td>
+      <td>2.118280</td>
+    </tr>
+    <tr>
+      <td>Biscuits + Sugar</td>
+      <td>184</td>
+      <td>18.4</td>
+      <td>2.372418</td>
+    </tr>
+    <tr>
+      <td>Bread + Milk</td>
+      <td>174</td>
+      <td>17.4</td>
+      <td>1.651967</td>
+    </tr>
+    <tr>
+      <td>Butter + Milk</td>
+      <td>111</td>
+      <td>11.1</td>
+      <td>1.284916</td>
+    </tr>
+    <tr>
+      <td>Sugar + Tea</td>
+      <td>105</td>
+      <td>10.5</td>
+      <td>1.978668</td>
+    </tr>
+    <tr>
+      <td>Biscuits + Coffee</td>
+      <td>104</td>
+      <td>10.4</td>
+      <td>2.476780</td>
+    </tr>
+    <tr>
+      <td>Butter + Cheese</td>
+      <td>104</td>
+      <td>10.4</td>
+      <td>2.020555</td>
+    </tr>
+    <tr>
+      <td>Bread + Cheese</td>
+      <td>104</td>
+      <td>10.4</td>
+      <td>1.657186</td>
+    </tr>
+    <tr>
+      <td>Coffee + Sugar</td>
+      <td>99</td>
+      <td>9.9</td>
+      <td>1.854627</td>
+    </tr>
+    <tr>
+      <td>Biscuits + Tea</td>
+      <td>96</td>
+      <td>9.6</td>
+      <td>2.299787</td>
+    </tr>
+    <tr>
+      <td>Cereal + Sugar</td>
+      <td>94</td>
+      <td>9.4</td>
+      <td>1.894703</td>
+    </tr>
+    <tr>
+      <td>Bread + Eggs</td>
+      <td>94</td>
+      <td>9.4</td>
+      <td>1.766419</td>
+    </tr>
+    <tr>
+      <td>Bread + Jam</td>
+      <td>94</td>
+      <td>9.4</td>
+      <td>1.674057</td>
+    </tr>
+    <tr>
+      <td>Milk + Sugar</td>
+      <td>93</td>
+      <td>9.3</td>
+      <td>1.031980</td>
+    </tr>
+    <tr>
+      <td>Cooking Oil + Rice</td>
+      <td>91</td>
+      <td>9.1</td>
+      <td>3.360290</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Recommendations</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Customer Buys</th>
+      <th>Recommended Product</th>
+      <th>Pair Count</th>
+      <th>Support %</th>
+      <th>Confidence %</th>
+      <th>Lift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bread</td>
+      <td>Butter</td>
+      <td>234</td>
+      <td>23.4</td>
+      <td>63.760218</td>
+      <td>2.118280</td>
+    </tr>
+    <tr>
+      <td>Sugar</td>
+      <td>Biscuits</td>
+      <td>184</td>
+      <td>18.4</td>
+      <td>58.598726</td>
+      <td>2.372418</td>
+    </tr>
+    <tr>
+      <td>Butter</td>
+      <td>Bread</td>
+      <td>234</td>
+      <td>23.4</td>
+      <td>77.740864</td>
+      <td>2.118280</td>
+    </tr>
+    <tr>
+      <td>Milk</td>
+      <td>Eggs</td>
+      <td>84</td>
+      <td>8.4</td>
+      <td>29.268293</td>
+      <td>2.018503</td>
+    </tr>
+    <tr>
+      <td>Biscuits</td>
+      <td>Coffee</td>
+      <td>104</td>
+      <td>10.4</td>
+      <td>42.105263</td>
+      <td>2.476780</td>
+    </tr>
+    <tr>
+      <td>Cooking Oil</td>
+      <td>Rice</td>
+      <td>91</td>
+      <td>9.1</td>
+      <td>51.412429</td>
+      <td>3.360290</td>
+    </tr>
+    <tr>
+      <td>Cheese</td>
+      <td>Butter</td>
+      <td>104</td>
+      <td>10.4</td>
+      <td>60.818713</td>
+      <td>2.020555</td>
+    </tr>
+    <tr>
+      <td>Coffee</td>
+      <td>Biscuits</td>
+      <td>104</td>
+      <td>10.4</td>
+      <td>61.176471</td>
+      <td>2.476780</td>
+    </tr>
+    <tr>
+      <td>Tea</td>
+      <td>Biscuits</td>
+      <td>96</td>
+      <td>9.6</td>
+      <td>56.804734</td>
+      <td>2.299787</td>
+    </tr>
+    <tr>
+      <td>Flour</td>
+      <td>Rice</td>
+      <td>89</td>
+      <td>8.9</td>
+      <td>53.293413</td>
+      <td>3.483230</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+</body>
+</html>
